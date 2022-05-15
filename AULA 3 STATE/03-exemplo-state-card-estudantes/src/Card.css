@@ -1,0 +1,15 @@
+img{
+    float: left;
+    padding: 5px;
+}
+.card{
+    text-align: left;
+    font-size: 20px;
+    width: 800px;
+    background-color: #282c34;
+    color: white;
+    margin-bottom: 10px;
+}
+.nome{
+    font-weight: bold;
+}

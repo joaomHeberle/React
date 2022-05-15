@@ -1,0 +1,32 @@
+.botaoBusca{
+    margin-top: 20px;
+    margin-right: 20px;
+    
+}
+.imgBusca{
+float: left;
+padding: 1px;
+margin-top: 5px;
+padding-right: 20px;
+}
+
+.divBusca{
+    border: 1px solid;
+    border-width: 50%;
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+   text-align: left;
+
+}
+
+.btn{
+    text-align: right !important ;
+    margin-left: 70%;
+ 
+}
+
+.centro{
+    text-align: -webkit-center;
+    
+}
