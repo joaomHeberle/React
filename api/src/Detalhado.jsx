@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 import './busca.css'
 const Detalhado =props => {
+  const navigate = useNavigate();
     const params = useParams();
     const [liv, setliv] = useState([]);
     const [livros, setLivros] = useState(props.lista);
@@ -52,7 +53,7 @@ console.log(liv)
               
               <button className='btn'onClick={()=>{
                 props.deletar(livro.id)
-
+                navigate(`/Detalhe`)
               }} >Deletar</button>
              
          
@@ -61,31 +62,6 @@ console.log(liv)
 </div>
   </div>
  )}
-{/* {
-props.lista.map(livro =>
-<div className='divBusca'>
- 
-    <img src={livro.volumeInfo.imageLinks.thumbnail} className="imgBusca" alt={livro.title} />
-  
- 
-   <div>
-    <p className='p'>Titulo: {livro.volumeInfo.title}.</p>
-  
-    
-      <p>Autores: {livro.volumeInfo.authors.map(author=>
-        author 
-        )}.</p>
-        {livro.volumeInfo.industryIdentifiers.map(indent=>
-            <>
-            <p>{indent.type}:{" "} 
-              {indent.identifier}.</p>
-              </>
-          )}
-
-</div>
-
-
-    </div>)} */}
     </div>
 
   </div>
