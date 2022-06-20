@@ -5,17 +5,17 @@ const cors = require('cors');
 const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
 var admin = require("firebase-admin");
-
+var DadosIniciais = require ("./DadosIniciais.json");
 var serviceAccount = require("./key.json");
 
 initializeApp({
     credential: cert(serviceAccount)
   });
-  
+  app.use(cors());
   const db = getFirestore();
   const docRef = db.collection('Jogadores');
 app.use(express.json());
-app.use(cors());
+
 app.use(express.urlencoded({extended: true}));
 
 
@@ -23,7 +23,6 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.urlencoded({ extended: true }));
 
   
-
 
 
 app.get('/jogadores', async(req, res) => {
@@ -35,7 +34,12 @@ app.get('/jogadores', async(req, res) => {
     return res.json(data.docs.map((doc)=>({...doc.data(), id: doc.id })))
 });
 app.post('/jogadores', async(req, res) => {
-    const result = await docRef.add(req.body);
+
+
+  const result = await docRef.add(req.body);
+
+  const data =await docRef.doc(result.id).update({Shop:DadosIniciais});
+
     return res.json(result)
 });
 
@@ -54,8 +58,8 @@ app.post('/jogador', async(req, res) => {
  });
  app.put('/jogadores', async(req, res) => {
      const { id } = req.params;
-     const data = await docRef.doc(req.body.id).update({name:req.body.name,level:req.body.level});
-
+     const data = await docRef.doc(req.body.id).update(req.body);
+console.log(req.body)
       
  
       res.send("alterado com sucesso");
