@@ -28,9 +28,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/jogadores', async(req, res) => {
     const data = await docRef.get();
 
-    data.forEach(doc =>{
+ /*    data.forEach(doc =>{
         console.log(doc.id, '=>', doc.data());
-    })
+    }) */
     return res.json(data.docs.map((doc)=>({...doc.data(), id: doc.id })))
 });
 app.post('/jogadores', async(req, res) => {
@@ -57,9 +57,8 @@ app.post('/jogador', async(req, res) => {
      res.send("Pessoa removida do banco com sucesso!");
  });
  app.put('/jogadores', async(req, res) => {
-     const { id } = req.params;
+ 
      const data = await docRef.doc(req.body.id).update(req.body);
-console.log(req.body)
       
  
       res.send("alterado com sucesso");

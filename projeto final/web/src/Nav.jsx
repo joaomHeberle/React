@@ -6,8 +6,8 @@ const Nav = () => {
             <div>
                 <Link to='/'>Home</Link>  |  
                 <Link to='/ListaJogadores'>Lista de Jogadores</Link> |
-                <Link to='/Cadastrar'>Cadastrar</Link> |
-                <Link to='/Pag2'>Página 2</Link>
+                <Link to='/Cadastrar'>Cadastrar</Link>
+              
             </div>
         </nav>
     );

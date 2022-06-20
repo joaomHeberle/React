@@ -41,29 +41,29 @@ function App() {
     }
 
 
-  }
-  , 
+  }, 
    handleEnvia = async (jog) => {
     
  
 
      const { data } = await axios.post(`http://localhost:4000/jogadores`, jog);
-   setJso(data);
+     handleListaTodos();
 
- } ,handleUpdate = async(jog)=>{
+ },
+ handleUpdate = async(jog)=>{
 
 console.log(jog)
 
 const {data}=await axios.put(`http://localhost:4000/jogadores`, jog)
-setJso(data);
+handleListaTodos();
 
 
  },
-  //  handleDeleta = async () => {
-  //   setFuncao("deleteClienteID/" + id)
-  //   const { data } = await axios.delete(url);
-  //   setJso(data);
-  // },
+   handleDeleta = async (id) => {
+
+    const { data } = await axios.delete(`http://localhost:4000/jogadores/${id}`);
+    handleListaTodos();
+  },
   //  escolheFuncao = (e) => {
 
   //   setFuncao(e.target.value);
@@ -103,7 +103,7 @@ useEffect(() => {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/shop/:id/' element={<Shop moeda={moeda} att={handleUpdate} lista={jso}/>}/>
-            <Route path='/ListaJogadores' element={<ListaJogadores listar={handleListaTodos} lista={jso}/>}/>
+            <Route path='/ListaJogadores' element={<ListaJogadores deletar={handleDeleta} listar={handleListaTodos} lista={jso}/>}/>
             <Route path='/ListaJogadores/:id/' element={<Detalhes lista={jso}/>}/>
             <Route path='/Cadastrar' element={<Cadastrar add={addJogador}/>}/>
           </Routes>

@@ -7,6 +7,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 
 
 function Shop(props) {
+  const navigate = useNavigate();
   const [jogadores, setJogadores] = useState([]);
   const jso = [props.lista];
   const moeda =props.moeda;
@@ -16,7 +17,7 @@ function Shop(props) {
     const [lista,setLista] = useState('');
 
     const [preco,setPreco]=useState([loja]);
-    const itemArray = [loja]
+ 
     const params = useParams();
 
   const handleOnDragStart = () => {
@@ -43,9 +44,7 @@ function Shop(props) {
         const { destination, source, draggableId } = result;
 
         
-    /*   const retPreco=preco.map((preco)=>{
-         return preco.itens[draggableId].preço
-        }) */
+  
 const retPreco=1;
 
     
@@ -87,8 +86,7 @@ const retPreco=1;
       
         return;
       }
-const ok=true;
-      if(ok){               
+             
       const startItem = Array.from(start.itensId);
  
       startItem.splice(source.index, 1);
@@ -114,31 +112,11 @@ const ok=true;
           [newFinish.id]: newFinish,
         },
       };
-  
+  console.log(newStart.id,newFinish.id)
       setLoja(newlistaInicial);
-    
-      if(destination.droppableId==='coluna-2'){
-
-        console.log(itemArray.map(ver=>ver.itens['item-1']))
-  
-     if(itemArray[0].itens['item-1'].id.match(finishItem.toString()))
-     {
-      console.log("entrou tem o 1")
-     }
-    if(itemArray[0].itens['item-2'].id.indexOf(finishItem.toString())>-1){
-      console.log("entrou tem o 2")
-     }
-
-
-      console.log(loja)
-      atu(loja)
-      }
-      if(destination.droppableId==='coluna-1'){
-        console.log("voltou para 1")
-      }
-    }else{
-      alert("voce não tem moedas suficientas faltam "+(retPreco-moeda)+" moedas")
-    }
+    console.log(loja.colunas)
+ 
+   
       };
   
     function listaItem(e){
@@ -152,9 +130,21 @@ const ok=true;
       )
       
     }
+ /*    function listaItem(){
+  console.log("entrou esta é a loja")
+  console.log(loja)
+      return loja.colunaOrdenacao.map(colunaId=>{
+        const coluna = loja.colunas[colunaId];
+          const itens = coluna.itensId.map(itemId => loja.itens[itemId]);
+                       return <Coluna key={coluna.id} coluna={coluna} itens={itens} moeda={moeda}/>;
+      }
+      
+      )
+      
+    } */
   
     function DadosIni(e){
-   
+    
       setLoja(e[0].Shop)
  
     }
@@ -162,25 +152,27 @@ const ok=true;
 
       let Filtrado = jso[0].filter(jog => jog.id == params.id);
       setJogadores(Filtrado);
-      console.log(Filtrado[0].name)
+     
       DadosIni(Filtrado);
       setLista(listaItem(Filtrado));
    
 
   }
-  function atu(e){
-console.log(jogadores)
-console.log(e)
-     props.att( {
-      id:jogadores[0].id,
-      name:jogadores[0].name,
-      level:jogadores[0].level,
-      Shop:e
-    }) 
-  }
-    useEffect(() => {
-    
+function divis(){
+  return     jogadores.map(jog => {
+    return <div>
+      Loja do :{" " + jog.name}
+        <br></br>
 
+
+    </div>
+})
+
+
+}
+    useEffect(() => {
+    //listaItem(jogadores)
+    //retorna()
        
    
      
@@ -194,14 +186,9 @@ console.log(e)
                     let Filtrado = jso[0].filter(jog => jog.id == params.id);
                     setJogadores(Filtrado);
 
-                }}{jogadores.map(jog => {
-                    return <div>
-                      Loja do :{" " + jog.name}
-                        <br></br>
-                
-
-                    </div>
-                })}
+                }}
+                 {divis()}
+            
              {console.log(jogadores)}
             <DragDropContext 
             onDragEnd={handleOnDragEnd}
@@ -209,9 +196,10 @@ console.log(e)
             onDragUpdate={handleOnDragUpdate}>
    <Container>
             {lista}
-     
+          
             </Container>
           </DragDropContext>
+         
       <button onClick={()=>{
   
         props.att( {
@@ -219,11 +207,12 @@ console.log(e)
           name:jogadores[0].name,
           level:jogadores[0].level,
           Shop:loja
-        }
-             
+        },
+                                      
 
 
         )
+       
       }}>Atualizar</button>
           </div>
 
