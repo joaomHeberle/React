@@ -1,0 +1,14 @@
+.lin{
+    text-decoration: none;
+    color:white;
+   margin-left: 10%;
+   margin-right: 10%;
+   font-weight: bold;
+
+}
+
+.lin:hover{
+    
+    background-color: #1c3258;
+
+}

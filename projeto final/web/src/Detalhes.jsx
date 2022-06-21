@@ -2,12 +2,13 @@ import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Button from './Button';
 const Detalhes = (props) => {
     const jso = [props.lista];
     const [jogadores, setJogadores] = useState([]);
     const params = useParams();
     const navigate = useNavigate();
-    const texto = "OutroTexto";
+  
     const Container = styled.div`
   margin: 8px;
   border: 1px solid lightgrey;
@@ -18,6 +19,7 @@ const Detalhes = (props) => {
   display: flex;
   flex-direction: column;
 `;
+
     const retorna = () => {
 
         let Filtrado = jso[0].filter(jog => jog.id == params.id);
@@ -41,14 +43,28 @@ const Detalhes = (props) => {
                     return <div>
                         Nome:{" " + jog.name}
                         <br></br>
-                        Level:{jog.level}
-
+                        Level:{" " + jog.level}
+                        <br />
+                        Moeda:{" " + jog.moeda}
                     </div>
                 })}</h1>
             </Container>
-            <button onClick={() => { navigate(-1) }}>Voltar</button>
-            <button onClick={() => { navigate('/') }}>Pagina Inicial</button>
-                <button onClick={()=>{navigate(`/Shop/${params.id}`)} }>Loja</button>
+            <Button onClick={() => {
+                navigate(-1)
+            }
+            }>Voltar</Button>
+            <Button onClick={() => {
+                navigate('/')
+            }
+            }>Pagina Inicial</Button>
+            <Button onClick={() => {
+                navigate(`/Shop/${params.id}`)
+            }
+            }>Loja</Button>
+            <Button onClick={() => {
+                    navigate(`/CadastrarPersonagem/${params.id}`)
+                }
+                }>Cadastrar Personagem</Button>
         </div>
     );
 }

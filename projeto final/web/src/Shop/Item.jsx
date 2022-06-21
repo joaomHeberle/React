@@ -20,7 +20,6 @@ width: 20px;
 height: 20px;
 background-size: contain;
 background-image: url(${dinheiro}) ;
-
 border-radius: 4px;
 margin-right: 8px;
 `;

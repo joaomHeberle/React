@@ -9,6 +9,7 @@ import Nav from './Nav';
 import ListaJogadores from './ListaJogadores'
 import Detalhes from './Detalhes';
 import Cadastrar from './Cadastrar'
+import CadastrarPersonagem from './CadastrarPersonagem';
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
   const [nome, setNovoNome] = useState('');
   const [id, setId] = useState("");
   const [jso, setJso] = useState([]);
- const [moeda,setMoeda]= useState(1000);
+ const [moeda,setMoeda]= useState(0);
 
 
   function handleNovoNome(e) {
@@ -77,13 +78,16 @@ handleListaTodos();
 
   //   setFuncao("getClienteNome/" + para);
   // },
-    addJogador = async (joga) => {
+    addJogador =  (joga) => {
 
       setJogador(joga)
       handleEnvia(joga);
 console.log(joga)
+    },
+    addMoeda = (moe)=>{
+      setMoeda(moe);
     }
-
+ 
 
 
 useEffect(() => {
@@ -94,18 +98,21 @@ useEffect(() => {
   return (
 
     <div className="App">
-          
-      <h1>Jogo Web</h1>
+           
+      
       <Router>
       <div className="App">
       <Nav/>
+        <h1>Jogo Web</h1>
+   
         <div className="App-center">
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/shop/:id/' element={<Shop moeda={moeda} att={handleUpdate} lista={jso}/>}/>
+            <Route path='/shop/:id/' element={<Shop att={handleUpdate} addMoeda={addMoeda} lista={jso}/>}/>
             <Route path='/ListaJogadores' element={<ListaJogadores deletar={handleDeleta} listar={handleListaTodos} lista={jso}/>}/>
             <Route path='/ListaJogadores/:id/' element={<Detalhes lista={jso}/>}/>
             <Route path='/Cadastrar' element={<Cadastrar add={addJogador}/>}/>
+            <Route path='/CadastrarPersonagem/:id/' element={<CadastrarPersonagem att={handleUpdate} add={addJogador}lista={jso}/>}/>
           </Routes>
        
         </div>

@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 
-
+import Button from "./Button";
 const Cadastrar = props =>{
     const [inputNome, setInputNome] = useState("");
     const [inputLevel, setInputLevel] = useState("");
-    const [inputImagem, setInputImagem] = useState("");
+   
 
 
 
@@ -28,8 +28,8 @@ const Cadastrar = props =>{
             <label htmlFor="level">Level: </label>
             <input type="text" id='level' size='50' value={inputLevel} onChange={handleInputLevelChange}/> <br />
            
-            <button onClick={() => {
-                props.add({name: inputNome,level: inputLevel})
+            <Button onClick={() => {
+                props.add({name: inputNome,level: inputLevel,moeda:1000})
                 setInputNome("");
                 setInputLevel("");
              
@@ -38,7 +38,7 @@ const Cadastrar = props =>{
 
                 }}>
                 Adicionar
-            </button>
+            </Button>
         </div>
     )
 }

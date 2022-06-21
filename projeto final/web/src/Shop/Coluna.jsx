@@ -43,7 +43,7 @@ export default class Coluna extends React.Component {
                         </ItemList>
                     )}
                 </Droppable>
-             
+     
             </Container>
     
         );
