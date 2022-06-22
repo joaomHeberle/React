@@ -15,9 +15,7 @@ const Cadastrar = props =>{
     const handleInputLevelChange = (e) => {
         setInputLevel(e.target.value)
     }
-    const handleInputImagemChange = (e) => {
-        setInputImagem(e.target.value)
-    }
+   
   
 
     return (

@@ -65,19 +65,7 @@ handleListaTodos();
     const { data } = await axios.delete(`http://localhost:4000/jogadores/${id}`);
     handleListaTodos();
   },
-  //  escolheFuncao = (e) => {
 
-  //   setFuncao(e.target.value);
-  //   handleClickUpdate();
-  // },
-  //  escolheId = (e) => {
-
-  //   setFuncao("getClienteId/" + para);
-  // },
-  //  escolheNome = (e) => {
-
-  //   setFuncao("getClienteNome/" + para);
-  // },
     addJogador =  (joga) => {
 
       setJogador(joga)

@@ -6,8 +6,9 @@ const Button= styled.button`border-color: #3498db;
   -webkit-transition: all 150ms ease-in-out;
   transition: all 150ms ease-in-out;
   border-radius: 10px;
-  margin-left:5px;
-  margin-right:5px;
+  margin:5px;
+  
+  
   &:hover {
     box-shadow: 0 0 10px 0 #c6e981 inset, 0 0 10px 4px #c6e981;
     color:black;

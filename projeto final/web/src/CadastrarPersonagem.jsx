@@ -2,10 +2,31 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import Button from './Button';
 import styled from 'styled-components';
+import Select from 'react-select'
+import Carousel from './Carousel';
 const CadastrarPersonagem = (props) =>{
     const Container = styled.div`
     display: flex;
-  
+
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    align-items: center;
+  `;
+  const Car = styled.div`
+  display: flex;
+
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+  align-items: center;
+  width:75%;
+  margin-left: auto;
+  margin-right: auto;
   `;
     const params = useParams();
     const jso = [props.lista];
@@ -14,7 +35,11 @@ const CadastrarPersonagem = (props) =>{
     const [inputNome, setInputNome] = useState("");
     const [inputLevel, setInputLevel] = useState("");
    const [inputImagem,setInputImagem] = useState("");
-
+   const options = [
+    { value: 'Guerreiro', label: 'Guerreiro' },
+    { value: 'Mago', label: 'Mago' },
+    { value: 'Ladrão', label: 'Ladrão' }
+  ]
     const handleInputImagem = (e) => {
         setInputImagem(e.target.value)
     }
@@ -37,15 +62,20 @@ const CadastrarPersonagem = (props) =>{
         console.log(Filtrado[0].name)
         return Filtrado[0].name
     }
-    return (<Container>
+    return (
+    <div>
+    <Container>
         <label htmlFor="nome">Nome: </label>
             <input type="text" id='nome' size='50' value={inputNome} onChange={handleInputNomeChange}/> <br />
 
             <label htmlFor="imagem">Imagem: </label>
             <input type="text" id='imagem' size='50' value={inputLevel} onChange={handleInputLevelChange}/> <br />
             <label htmlFor="classe">Classe: </label>
-            <input type="text" id='classe' size='50' value={inputLevel} onChange={handleInputLevelChange}/> <br />
-      
+            <Select options={options} />
+
+
+            
+           
       <Button onClick={() => {
                    props.att({
                     id: jogadores[0].id,
@@ -64,7 +94,12 @@ const CadastrarPersonagem = (props) =>{
                 }}>
                 Adicionar
             </Button>
+            
     </Container>
+    <Car>
+    <Carousel/>
+    </Car>
+    </div>
     );
 }
 
