@@ -27,7 +27,10 @@ function App() {
   function handleNovoLevel(e) {
     setNovoLevel(e.target.value);
   }
- 
+/*  const verificarAtivo=()=>{
+  var elementos
+  return elementos = rootElement.getElementsByClassName(active);
+ } */
 
 
   const handleListaTodos = async () => {

@@ -25,6 +25,9 @@ body {
       rgba(64, 175, 255, 1) 0%,
       rgba(63, 97, 255, 1) 100%
     );
+    background-image: url("./imagem/1.jpg") ;
+    background-repeat: no-repeat;
+    background-position:center;
   }
   
   .number-slide2 {

@@ -2,7 +2,8 @@ import React from "react"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import "./styles.css"
-export default function Carousel() {
+const Carousel =(props)=> {
+  
 function ThumbnailPlugin(mainRef) {
   return (slider) => {
     function removeActive() {
@@ -12,6 +13,8 @@ function ThumbnailPlugin(mainRef) {
     }
     function addActive(idx) {
       slider.slides[idx].classList.add("active")
+  
+      props.get(slider.slides[idx].attributes.value.nodeValue)
     }
 
     function addClickEvents() {
@@ -54,22 +57,23 @@ function ThumbnailPlugin(mainRef) {
   return (
     <>
       <div ref={sliderRef} className="keen-slider">
-        <div className="keen-slider__slide number-slide1">1</div>
-        <div className="keen-slider__slide number-slide2">2</div>
-        <div className="keen-slider__slide number-slide3">3</div>
-        <div className="keen-slider__slide number-slide4">4</div>
-        <div className="keen-slider__slide number-slide5">5</div>
-        <div className="keen-slider__slide number-slide6">6</div>
+        <div className="keen-slider__slide number-slide1"></div>
+        <div className="keen-slider__slide number-slide2"></div>
+        <div className="keen-slider__slide number-slide3"></div>
+        <div className="keen-slider__slide number-slide4"></div>
+        <div className="keen-slider__slide number-slide5"></div>
+        <div className="keen-slider__slide number-slide6"></div>
       </div>
 
       <div ref={thumbnailRef} className="keen-slider thumbnail">
-        <div className="keen-slider__slide number-slide1">1</div>
-        <div className="keen-slider__slide number-slide2">2</div>
-        <div className="keen-slider__slide number-slide3">3</div>
-        <div className="keen-slider__slide number-slide4">4</div>
-        <div className="keen-slider__slide number-slide5">5</div>
-        <div className="keen-slider__slide number-slide6">6</div>
+        <div value="1" className="keen-slider__slide number-slide1"></div>
+        <div value="2" className="keen-slider__slide number-slide2"></div>
+        <div value="3" className="keen-slider__slide number-slide3"></div>
+        <div value="4" className="keen-slider__slide number-slide4"></div>
+        <div value="5" className="keen-slider__slide number-slide5"></div>
+        <div value="6" className="keen-slider__slide number-slide6"></div>
       </div>
     </>
   )
 }
+export default Carousel;

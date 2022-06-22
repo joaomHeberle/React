@@ -4,6 +4,7 @@ import Button from './Button';
 import styled from 'styled-components';
 import Select from 'react-select'
 import Carousel from './Carousel';
+import img1 from './imagem/1.jpg'
 const CadastrarPersonagem = (props) =>{
     const Container = styled.div`
     display: flex;
@@ -54,7 +55,15 @@ const CadastrarPersonagem = (props) =>{
     const handleInputImagemChange = (e) => {
         setInputImagem(e.target.value)
     }
-  
+  const getImagem=(e)=>{
+    if(e==1){
+    
+     
+        setInputImagem(img1)
+    }
+   
+    
+  }
     const retorna = () => {
 
         let Filtrado = jso[0].filter(jog => jog.id == params.id);
@@ -68,15 +77,19 @@ const CadastrarPersonagem = (props) =>{
         <label htmlFor="nome">Nome: </label>
             <input type="text" id='nome' size='50' value={inputNome} onChange={handleInputNomeChange}/> <br />
 
-            <label htmlFor="imagem">Imagem: </label>
-            <input type="text" id='imagem' size='50' value={inputLevel} onChange={handleInputLevelChange}/> <br />
             <label htmlFor="classe">Classe: </label>
+            <img src={inputImagem}></img>
             <Select options={options} />
 
 
             
            
-      <Button onClick={() => {
+      
+            
+    </Container>
+    <Car>
+    <Carousel get={getImagem}/>
+    <Button onClick={() => {
                    props.att({
                     id: jogadores[0].id,
                     name: jogadores[0].name,
@@ -94,10 +107,6 @@ const CadastrarPersonagem = (props) =>{
                 }}>
                 Adicionar
             </Button>
-            
-    </Container>
-    <Car>
-    <Carousel/>
     </Car>
     </div>
     );

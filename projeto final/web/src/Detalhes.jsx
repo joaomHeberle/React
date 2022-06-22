@@ -24,7 +24,7 @@ const Detalhes = (props) => {
 
         let Filtrado = jso[0].filter(jog => jog.id == params.id);
         setJogadores(Filtrado);
-        console.log(Filtrado[0].name)
+      
         return Filtrado[0].name
     }
 
