@@ -15,6 +15,7 @@ function ThumbnailPlugin(mainRef) {
       slider.slides[idx].classList.add("active")
   
       props.get(slider.slides[idx].attributes.value.nodeValue)
+  
     }
 
     function addClickEvents() {
