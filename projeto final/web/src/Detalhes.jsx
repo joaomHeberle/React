@@ -3,13 +3,29 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+
+
+import Photo from './Photo';
 const Detalhes = (props) => {
+    const [ini,setIni]=useState([{nome:"",classe:"",imagem:""}])
     const jso = [props.lista];
     const [jogadores, setJogadores] = useState([]);
     const params = useParams();
     const navigate = useNavigate();
-  
-    const Container = styled.div`
+    const Lista = styled.div`
+    margin: 8px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    margin-left: auto;
+    margin-right:auto;
+    width:80%;
+    display: flex;
+    flex-direction: column;
+ 
+  `,
+
+
+    Container = styled.div`
   margin: 8px;
   border: 1px solid lightgrey;
   border-radius: 2px;
@@ -18,9 +34,7 @@ const Detalhes = (props) => {
   width:35%;
   display: flex;
   flex-direction: column;
-`;
-
-    const retorna = () => {
+`, retorna = () => {
 
         let Filtrado = jso[0].filter(jog => jog.id == params.id);
         setJogadores(Filtrado);
@@ -33,21 +47,32 @@ const Detalhes = (props) => {
 
     }, [setJogadores]);
     return (
+        
         <div>
+
             <Container>
-                <h1>{() => {
+            <Lista>
+                {() => {
                     let Filtrado = jso[0].filter(jog => jog.id == params.id);
                     setJogadores(Filtrado);
-
+                    
                 }}{jogadores.map(jog => {
-                    return <div>
+                    return <div key={jog.id}>
                         Nome:{" " + jog.name}
                         <br></br>
                         Level:{" " + jog.level}
                         <br />
                         Moeda:{" " + jog.moeda}
+          
+                        
+                            <Photo lista={jog.Personagem==undefined?ini:jog.Personagem}></Photo>
+                          
+                    
                     </div>
-                })}</h1>
+                   
+                })}
+                </Lista>
+            
             </Container>
             <Button onClick={() => {
                 navigate(-1)

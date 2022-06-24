@@ -10,7 +10,7 @@ import ListaJogadores from './ListaJogadores'
 import Detalhes from './Detalhes';
 import Cadastrar from './Cadastrar'
 import CadastrarPersonagem from './CadastrarPersonagem';
-
+import ListaPersonagem from './ListaPersonagem';
 function App() {
 
   const [jogador, setJogador] = useState('');
@@ -27,10 +27,7 @@ function App() {
   function handleNovoLevel(e) {
     setNovoLevel(e.target.value);
   }
-/*  const verificarAtivo=()=>{
-  var elementos
-  return elementos = rootElement.getElementsByClassName(active);
- } */
+
 
 
   const handleListaTodos = async () => {
@@ -104,6 +101,7 @@ useEffect(() => {
             <Route path='/ListaJogadores/:id/' element={<Detalhes lista={jso}/>}/>
             <Route path='/Cadastrar' element={<Cadastrar add={addJogador}/>}/>
             <Route path='/CadastrarPersonagem/:id/' element={<CadastrarPersonagem att={handleUpdate} add={addJogador}lista={jso}/>}/>
+            <Route path='/ListaPersonagem/:nome/:classe/:imagem' element={<ListaPersonagem />}/>
           </Routes>
        
         </div>

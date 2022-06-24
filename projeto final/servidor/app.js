@@ -7,7 +7,7 @@ const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestor
 var admin = require("firebase-admin");
 var DadosIniciais = require ("./DadosIniciais.json");
 var serviceAccount = require("./key.json");
-
+var Personagem = require("./PersonagemInicial.json")
 initializeApp({
     credential: cert(serviceAccount)
   });
@@ -38,7 +38,7 @@ app.post('/jogadores', async(req, res) => {
 
   const result = await docRef.add(req.body);
 
-  const data =await docRef.doc(result.id).update({Shop:DadosIniciais});
+  const data =await docRef.doc(result.id).update({Shop:DadosIniciais,Personagem:[Personagem]});
 
     return res.json(result)
 });

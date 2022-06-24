@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 import Button from "./Button";
 import { useNavigate} from 'react-router-dom'
 
+
+
 const Container = styled.div`
   margin: 8px;
   border: 1px solid lightgrey;
@@ -46,13 +48,9 @@ const ListaJogadores = (props) => {
 
     return ( 
         <div>
-             <pre >
-   
       
-     
-      {/* {JSON.stringify(jso.map(shop=>{
-        return shop.Shop
-       })) }  */}
+             <pre >
+
 {jso[0].map((user)=>{
     return <Container key={user.id} >
         <Lista onClick={()=>navigate(`/ListaJogadores/${user.id}`)}>
