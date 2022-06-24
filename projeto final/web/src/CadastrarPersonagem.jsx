@@ -5,9 +5,10 @@ import Button from './Button';
 import styled from 'styled-components';
 import Select from 'react-select'
 import Carousel from './Carousel';
-
+import { useNavigate } from 'react-router-dom'
 
 const CadastrarPersonagem = (props) => {
+  const navigate = useNavigate();
   const Container = styled.div`
     display: flex;
     display: -ms-flexbox;
@@ -100,8 +101,8 @@ const CadastrarPersonagem = (props) => {
 
   }, adicionar = (e) => {
     if (jogadores.Personagem[0].imagem == "") {
-      console.log(jogadores.Personagem[0]=e)
-   
+      jogadores.Personagem[0] = e
+
     } else {
       jogadores.Personagem.push(e);
     }
@@ -109,6 +110,7 @@ const CadastrarPersonagem = (props) => {
 
 
     props.att(jogadores)
+
   }
 
 
@@ -151,13 +153,16 @@ const CadastrarPersonagem = (props) => {
             classe: classe,
             imagem: imge
           });
-
-
-
+            setInputNome("");
+            setOpt(options[0]);
+            navigate('/')
         }}>
           Adicionar
         </Button>
-
+        <Button onClick={() => {
+          navigate(-1)
+        }
+        }>Voltar</Button>
 
       </Car>
 

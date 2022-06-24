@@ -7,7 +7,7 @@ import Button from './Button';
 
 import Photo from './Photo';
 const Detalhes = (props) => {
-    const [ini,setIni]=useState([{nome:"",classe:"",imagem:""}])
+   // const [ini, setIni] = useState([{ nome: "", classe: "", imagem: "" }])
     const jso = [props.lista];
     const [jogadores, setJogadores] = useState([]);
     const params = useParams();
@@ -18,61 +18,75 @@ const Detalhes = (props) => {
     border-radius: 2px;
     margin-left: auto;
     margin-right:auto;
-    width:80%;
+    width:20rem;
     display: flex;
     flex-direction: column;
- 
+    background-color: ghostwhite;
   `,
 
 
-    Container = styled.div`
+        Container = styled.div`
   margin: 8px;
-  border: 1px solid lightgrey;
-  border-radius: 2px;
   margin-left: auto;
   margin-right:auto;
-  width:35%;
+  width:20rem;
   display: flex;
   flex-direction: column;
-`, retorna = () => {
+  
+`,
+        Conter = styled.div`
+margin: 8px;
+border: 1px solid lightgrey;
+border-radius: 2px;
+margin-left: auto;
+margin-right:auto;
+width:10rem;
+display: flex;
+flex-direction: column;
 
-        let Filtrado = jso[0].filter(jog => jog.id == params.id);
-        setJogadores(Filtrado);
-      
-        return Filtrado[0].name
-    }
+`
+        ,
+         retorna = () => {
+
+            let Filtrado = jso[0].filter(jog => jog.id == params.id);
+            setJogadores(Filtrado);
+
+            return Filtrado[0].name
+        }
 
     useEffect(() => {
         retorna()
 
     }, [setJogadores]);
     return (
-        
+
         <div>
 
             <Container>
-            <Lista>
-                {() => {
-                    let Filtrado = jso[0].filter(jog => jog.id == params.id);
-                    setJogadores(Filtrado);
-                    
-                }}{jogadores.map(jog => {
-                    return <div key={jog.id}>
-                        Nome:{" " + jog.name}
-                        <br></br>
-                        Level:{" " + jog.level}
-                        <br />
-                        Moeda:{" " + jog.moeda}
-          
-                        
-                            <Photo lista={jog.Personagem==undefined?ini:jog.Personagem}></Photo>
-                          
-                    
-                    </div>
-                   
-                })}
+                <Lista>
+                    {() => {
+                        let Filtrado = jso[0].filter(jog => jog.id == params.id);
+                        setJogadores(Filtrado);
+
+                    }}{jogadores.map(jog => {
+                        return <div key={jog.id}>
+                            <Conter>
+                                Nome:{" " + jog.name}
+                                <br></br>
+                                Level:{" " + jog.level}
+                                <br />
+                                Moeda:{" " + jog.moeda}
+                            </Conter>
+
+
+                            <Photo lista={jog.Personagem}></Photo>
+
+
+                        </div>
+
+                    })}
                 </Lista>
-            
+
             </Container>
             <Button onClick={() => {
                 navigate(-1)
@@ -87,9 +101,9 @@ const Detalhes = (props) => {
             }
             }>Loja</Button>
             <Button onClick={() => {
-                    navigate(`/CadastrarPersonagem/${params.id}`)
-                }
-                }>Cadastrar Personagem</Button>
+                navigate(`/CadastrarPersonagem/${params.id}`)
+            }
+            }>Cadastrar Personagem</Button>
         </div>
     );
 }

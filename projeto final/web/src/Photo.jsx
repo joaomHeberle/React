@@ -5,13 +5,13 @@ import img4 from './imagem/4.png';
 import img5 from './imagem/5.png';
 import img6 from './imagem/6.png';
 import styled from 'styled-components';
-import { useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Photo = (props) => {
     const navigate = useNavigate();
     const photo = props.lista,
         montaImagem = (e) => {
-            console.log(e)
+            
             switch (e) {
                 case '1':
                     return img1
@@ -38,14 +38,23 @@ const Photo = (props) => {
         },
         Foto = styled.div`
         margin: 8px;
-           border: 1px solid lightgrey;
+           border:${() =>(
+            photo[0].imagem==""?'':'1px solid lightgrey'
+           
+            )}; 
            border-radius: 2px;
            margin-left: auto;
            margin-right:auto;
-           width:80%;
+           width:40%;
            display: flex;
            flex-direction: column;
-        cursor:pointer;
+
+        cursor:${() =>(
+            photo[0].imagem==""?'':'pointer'
+           
+            )};
+      
+
          `
 
 
@@ -55,14 +64,14 @@ const Photo = (props) => {
     return (
         <div>
 
-            {photo.map((photo,index) => 
+            {photo.map((photo, index) =>
                 <Foto key={index}>
-            <img src={montaImagem(photo.imagem)} alt="" onClick={
-                ()=>navigate(`/ListaPersonagem/${photo.nome}/${photo.classe}/${photo.imagem}`)} />
-            </Foto>
+                    <img src={montaImagem(photo.imagem)}  alt="" onClick={
+                        () => navigate(`/ListaPersonagem/${photo.nome}/${photo.classe}/${photo.imagem}`)} />
+                </Foto>
             )}
-           
-           </div>
+
+        </div>
     );
 }
 

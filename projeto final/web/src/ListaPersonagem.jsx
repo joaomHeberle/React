@@ -6,7 +6,9 @@ import img3 from './imagem/3.png';
 import img4 from './imagem/4.png';
 import img5 from './imagem/5.png';
 import img6 from './imagem/6.png';
-import { useEffect } from 'react';
+import Button from './Button';
+
+import {  useState,useEffect } from 'react';
 
 const ListaPersonagem=(props)=>{
 
@@ -17,10 +19,12 @@ const ListaPersonagem=(props)=>{
     border-radius: 2px;
     margin-left: auto;
     margin-right:auto;
-    width:35%;
+    width:20rem;
     display: flex;
     flex-direction: column;
-  `,      Foto = styled.div`
+  `
+  ,navigate=useNavigate()
+  ,      Foto = styled.div`
   margin: 8px;
      border: 1px solid lightgrey;
      border-radius: 2px;
@@ -29,8 +33,12 @@ const ListaPersonagem=(props)=>{
      width:80%;
      display: flex;
      flex-direction: column;
-  cursor:pointer;
+
    `
+   const [jogadores, setJogadores] = useState();
+
+   const [inputNome, setInputNome] = useState("");
+
   const montaImagem = (e) => {
       console.log(e)
       switch (e) {
@@ -58,8 +66,7 @@ const ListaPersonagem=(props)=>{
       }
   }
   useEffect(() => {
-   // montaImagem()
-
+  
 }, []);
     return(
    <Container>
@@ -68,7 +75,14 @@ const ListaPersonagem=(props)=>{
    Classe: {params.classe}<br></br>
    </Foto>
     <img src={montaImagem(params.imagem)}></img>
-  
+    <Button onClick={() => {
+                navigate(-1)
+            }
+            }>Voltar</Button>
+            <Button onClick={() => {
+                navigate('/')
+            }
+            }>Pagina Inicial</Button>
    </Container>
     )
 }

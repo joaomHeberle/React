@@ -97,7 +97,7 @@ useEffect(() => {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/shop/:id/' element={<Shop att={handleUpdate} addMoeda={addMoeda} lista={jso}/>}/>
-            <Route path='/ListaJogadores' element={<ListaJogadores deletar={handleDeleta} listar={handleListaTodos} lista={jso}/>}/>
+            <Route path='/ListaJogadores' element={<ListaJogadores att={handleUpdate} deletar={handleDeleta} listar={handleListaTodos} lista={jso}/>}/>
             <Route path='/ListaJogadores/:id/' element={<Detalhes lista={jso}/>}/>
             <Route path='/Cadastrar' element={<Cadastrar add={addJogador}/>}/>
             <Route path='/CadastrarPersonagem/:id/' element={<CadastrarPersonagem att={handleUpdate} add={addJogador}lista={jso}/>}/>
