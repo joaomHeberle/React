@@ -56,10 +56,11 @@ app.post('/jogador', async(req, res) => {
 
      res.send("Pessoa removida do banco com sucesso!");
  });
+ 
  app.put('/jogadores', async(req, res) => {
  
      const data = await docRef.doc(req.body.id).update(req.body);
-      
+     //console.log(req) 
  
       res.send("alterado com sucesso");
     

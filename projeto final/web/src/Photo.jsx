@@ -6,7 +6,7 @@ import img5 from './imagem/5.png';
 import img6 from './imagem/6.png';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom'
-
+import Button from './Button';
 const Photo = (props) => {
     const navigate = useNavigate();
     const photo = props.lista,
@@ -57,20 +57,31 @@ const Photo = (props) => {
 
          `
 
+const remove=(e)=>{
 
+
+
+
+}
 
 
 
     return (
         <div>
 
-            {photo.map((photo, index) =>
+            {photo.map((foto, index) =>
                 <Foto key={index}>
-                    <img src={montaImagem(photo.imagem)}  alt="" onClick={
-                        () => navigate(`/ListaPersonagem/${photo.nome}/${photo.classe}/${photo.imagem}`)} />
+                    <img src={montaImagem(foto.imagem)}  alt="" onClick={
+                        () => navigate(`/ListaPersonagem/${foto.nome}/${foto.classe}/${foto.imagem}`)} />
+                    <Button onClick={()=>{
+                    
+                        
+                        props.get(index)
+                        }}>Deletar</Button>
+                    
                 </Foto>
             )}
-
+   
         </div>
     );
 }

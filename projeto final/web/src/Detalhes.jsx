@@ -7,7 +7,8 @@ import Button from './Button';
 
 import Photo from './Photo';
 const Detalhes = (props) => {
-   // const [ini, setIni] = useState([{ nome: "", classe: "", imagem: "" }])
+
+
     const jso = [props.lista];
     const [jogadores, setJogadores] = useState([]);
     const params = useParams();
@@ -50,14 +51,19 @@ flex-direction: column;
 
             let Filtrado = jso[0].filter(jog => jog.id == params.id);
             setJogadores(Filtrado);
-
+            console.log("entrou")
             return Filtrado[0].name
+        },
+        getIndex=(e)=>{
+           jogadores[0].Personagem.splice(e,1)
+           console.log(jogadores)
+           props.att(jogadores[0])
         }
 
     useEffect(() => {
         retorna()
-
-    }, [setJogadores]);
+    
+    }, []);
     return (
 
         <div>
@@ -79,12 +85,13 @@ flex-direction: column;
                             </Conter>
 
 
-                            <Photo lista={jog.Personagem}></Photo>
-
-
+                            <Photo lista={jog.Personagem} get={getIndex} id={jog.id} att={props.att}></Photo>
+                           
+                        
                         </div>
 
                     })}
+               
                 </Lista>
 
             </Container>

@@ -232,7 +232,7 @@ props.att({
 
 
 )
-
+navigate('/')
 }}>Atualizar</Button>
      <footer> <a target="_blank" href="https://icons8.com/icon/54390/pilha-de-dinheiro">Pilha de dinheiro icon by Icons8</a></footer>
     </div>

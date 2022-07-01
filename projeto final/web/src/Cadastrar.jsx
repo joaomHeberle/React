@@ -1,12 +1,21 @@
 import React, {useState} from "react";
 import { useNavigate } from 'react-router-dom'
 import Button from "./Button";
+import styled from 'styled-components';
 const Cadastrar = props =>{
     const [inputNome, setInputNome] = useState("");
     const [inputLevel, setInputLevel] = useState("");
    
     const navigate = useNavigate();
-
+    const Container = styled.div`
+    display: flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    align-items: center;
+  `;
 
 
     const handleInputNomeChange = (e) => {
@@ -19,7 +28,7 @@ const Cadastrar = props =>{
   
 
     return (
-        <div className='jogadorAdicionar'>
+        <Container>
             <label htmlFor="nome">Nome: </label>
             <input type="text" id='nome' size='50' value={inputNome} onChange={handleInputNomeChange}/> <br />
 
@@ -41,7 +50,7 @@ const Cadastrar = props =>{
                 Adicionar
             </Button>
           
-        </div>
+        </Container>
     )
 }
 
